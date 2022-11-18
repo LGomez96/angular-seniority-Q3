@@ -1,4 +1,44 @@
-.container{
+.container {
     display: flex;
-    
+    flex-direction: column;
+    margin: 5%;
+}
+
+.navigation__section {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding-bottom: 4%;
+}
+
+.text {
+    color: #4a4a50;
+}
+
+.input {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+
+    &__search {
+        border: 1px solid #4a4a50;
+    }
+
+    &__open-modal {
+        background: #222222;
+        color: white;
+        width: 20%;
+    }
+
+}
+
+@media (max-device-width:100px) {
+    .navigation__section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .input__open-modal{
+        margin-top: 5%;
+    }
 }

@@ -1,14 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { PlayerServiceService } from '/Users/USER/Desktop/laboratoria/angular-seniority-Q3/src/app/services/player-service/player-service.service';
 
 import { CardPlayerComponent } from './card-player.component';
 
 describe('CardPlayerComponent', () => {
   let component: CardPlayerComponent;
   let fixture: ComponentFixture<CardPlayerComponent>;
+  const mockPlayerService = {
+    deletePlayer: jest.fn()
+  }
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CardPlayerComponent ]
+      declarations: [ CardPlayerComponent ],
+      providers: [{provide: PlayerServiceService, useValue: mockPlayerService }]
     })
     .compileComponents();
   });

@@ -1,42 +1,24 @@
-<h1>MI EQUIPO</h1>
 <div class="container">
-    <div>
-        <form autocomplete="off">
-            <input [formControl]="search" 
-            type="text" 
-            placeholder="Ej. Buscar por nombre" 
-            class="input-search">
-        </form>
-    </div>
-    <div>
-        <button [routerLink]="['add-players']">Agregar</button>
-      
-    </div>
 
+    <h1 class="text text-header">MI EQUIPO</h1>
+    <div class="navigation__section">
+        <div>
+            <form autocomplete="off">
+                <input [formControl]="search" 
+                type="text" 
+                placeholder="Ej. Buscar por nombre" 
+                class="input input__search">
+            </form>
+            <button class="input input__open-modal" [routerLink]="['add-player']">Agregar</button>
+        </div>
+       <ng-container **ngIf="modalSwitch" ngClass=" background-color: rgb(0,0,0); background-color:rgb(0,0,0,0.4)">
+        <div class="modal__container">
+            <app-modal [player$]="player$"></app-modal>
+        </div>
+       </ng-container>
+       <app-card-player [player$]="player$"></app-card-player>
+    </div>
 </div>
-<ng-container *ngFor="let player of (listOfPlayers$ | async)">
-    <div class="container__card">
-        <div class="card__title">
-            <h2 class="header header__title"><b>Lionel Mesi</b></h2>
-        </div>
-        <div class="card__info">
-            <div class="card__positions">
-                <div class="position">
-                    <h4></h4>
-                    <p></p>
-                </div>
-                <div class="position">
-                    <h4></h4>
-                    <p></p>
-                </div>
-                <div class="position">
-                    <h4></h4>
-                    <p></p>
-                </div>
-            </div>
-            <div class="card__actions"></div>
-        </div>
-    </div>
-</ng-container>
 
-<app-card-player></app-card-player>
+
+<router-outlet></router-outlet>

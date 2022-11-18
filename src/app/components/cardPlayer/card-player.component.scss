@@ -1,3 +1,75 @@
 .container__card{
     width: 40%;
 }
+.text{
+    color: #4A4A50;
+    &-title{
+        text-align: center;
+        position: relative;
+        top: 70%;
+        font-size: 20px;
+    }
+    }
+
+    .card-player__container{
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        place-content: center;
+        gap: 1rem;
+
+    }
+    .card__player{
+        background:  #4A4A50;
+        border-radius: 8px;
+        color: #ffff;
+        display: flex;
+        flex-direction: column;
+    }
+    .card__title{
+        background-color: white;
+        border-radius:8px;
+        background-size: 100%;
+        background-position: center;
+        height: 300px;
+       
+    }
+    .card__positions{
+        display: flex;
+        justify-content: space-evenly;
+        align-content: center;
+        text-align: center;
+    }
+    .card__actions{
+        display: flex;
+        align-content: center;
+        justify-content: center;
+    }
+    .btn{
+        border: none;
+        &-edit{
+            background:  #4A4A50;
+        }
+        &-delete{
+            background:  #4A4A50;
+        }
+    }
+    .position{
+        display: flex;
+        flex-direction: column;
+        &-header{
+            font-size: 12px;
+            margin-bottom: 0;
+        }
+        &-data{
+            font-size: 24px;;
+            margin-top: 0;
+        }
+    }
+    // vista mobile
+@media (max-device-width: 1000px) {
+    .card-player__container{
+        display: flex;
+        flex-direction: column;
+
+    }
+    }

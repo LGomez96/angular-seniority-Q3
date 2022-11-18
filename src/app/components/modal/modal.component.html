@@ -1,20 +1,67 @@
-<h1>AGREGAR AL JUGADOR</h1>
-<form [formGroup]="formPlayer" (submit)="addPlayer()" >
-    <h1>{{btnChange}}</h1>
-    <label>Nombre</label>
-    <input formControlName="firstName" type="text">
-    <small class="alertDanger" *ngIf="firstName.touched && firstName.hasError('required')">
-      Este  campo es requerido
-    </small>
-    <label>Apellido</label>
-    <input formControlName="lastName" type="text">
-    <small class="alertDanger" *ngIf="lastName.touched && lastName.hasError('required')">
-      Este  campo es requerido
-    </small>
-    <label>Imagen</label>
-    <input formControlName="image" type="text">
-    <small class="alertDanger" *ngIf="image.touched && image.hasError('required')">
-      Este  campo es requerido
-    </small>
-    <input id="btnRegister" type="submit" value="{{btnAction}}">
-</form>  
+<div class="container__dialog">
+  <dialog open>
+
+    <div class="modal">
+      <div class="modal__body">
+        <button [routerLink]="['']" class="close-modal"><svg width="20px" height="20px"
+            viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M6.22566 4.81096C5.83514 4.42044 5.20197 4.42044 4.81145 4.81096C4.42092 5.20148 4.42092 5.83465 4.81145 6.22517L10.5862 11.9999L4.81151 17.7746C4.42098 18.1651 4.42098 18.7983 4.81151 19.1888C5.20203 19.5793 5.8352 19.5793 6.22572 19.1888L12.0004 13.4141L17.7751 19.1888C18.1656 19.5793 18.7988 19.5793 19.1893 19.1888C19.5798 18.7983 19.5798 18.1651 19.1893 17.7746L13.4146 11.9999L19.1893 6.22517C19.5799 5.83465 19.5799 5.20148 19.1893 4.81096C18.7988 4.42044 18.1657 4.42044 17.7751 4.81096L12.0004 10.5857L6.22566 4.81096Z"
+              fill="black" />
+          </svg>
+        </button>
+        <h1>{{btnChange| uppercase}}</h1>
+        <form [formGroup]="formPlayer" (submit)="addPlayer()">
+          <div class="img-container">
+            <img *ngFor="let player of (player$ |async)" appImgBroke [src]="player.image" alt="jugador de futbol">
+          </div>
+          <div class="container-data">
+            <div class="form-data">
+
+              <label>Nombre
+                <br>
+                <input class="btn btn-data" formControlName="firstName" type="text">
+                <br><small class="alertDanger" *ngIf="isValid('firstName')">
+                  Este campo es requerido
+                </small>
+              </label>
+              <label>Apellido
+                <br>
+                <input class="btn btn-data" formControlName="lastName" type="text">
+                <br><small class="alertDanger" *ngIf="isValid('lastName')">
+                  Este campo es requerido
+                </small>
+              </label>
+              <label>Imagen
+                <br>
+                <input class="btn btn-data" formControlName="image" type="text">
+                <br><small class="alertDanger" *ngIf="isValid('image')">
+                  Este campo es requerido
+                </small>
+              </label>
+              <label>Posición
+                <br><select class="btn btn-data" formControlName="idPosition">
+                  <option *ngFor="let item of (positionList$| async)" [value]="item.id" [innerHtml]="item.description">
+                  </option>
+                </select><br><small *ngIf="isValid('idPosition')" class="alertDanger">
+                  Este campo es requerido
+                </small></label>
+
+
+            </div>
+            <div class="slider">
+              <app-slider formControlName="attack" [label]="'Ataque'"></app-slider>
+              <app-slider formControlName="defense" [label]="'Defensa'"></app-slider>
+              <app-slider formControlName="skills" [label]="'Skill'"></app-slider>
+
+            </div>
+            <input class="btn btn-send" id="btnRegister" type="submit" value="{{btnAction}}">
+          </div>
+        </form>
+      </div>
+      <pre>{{formPlayer.valid}}</pre>
+      <pre>{{formPlayer.value|json}}</pre>
+      <pre>{{formPlayer.errors|json}}</pre>
+      <pre>{{formPlayer.pristine}}</pre>
+
+    </div>
