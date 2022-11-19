@@ -48,7 +48,7 @@ export class ModalComponent {
         next: player => {
          
           this.btnAction = 'Editar';
-          this.btnChange = 'Edición de Libro';
+          this.btnChange = 'Edición de jugaor';
           console.log(this.edit, 'this edit')
           this.edit = player[0]
           this.formPlayer.patchValue({

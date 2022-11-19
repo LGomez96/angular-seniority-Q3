@@ -50,9 +50,9 @@
 
             </div>
             <div class="slider">
-              <app-slider formControlName="attack" [label]="'Ataque'"></app-slider>
-              <app-slider formControlName="defense" [label]="'Defensa'"></app-slider>
-              <app-slider formControlName="skills" [label]="'Skill'"></app-slider>
+              <app-slider ngDefaultControl formControlName="attack" [label]="'Ataque'"></app-slider>
+              <app-slider ngDefaultControl formControlName="defense" [label]="'Defensa'"></app-slider>
+              <app-slider ngDefaultControl formControlName="skills" [label]="'Skill'"></app-slider>
 
             </div>
             <input class="btn btn-send" id="btnRegister" type="submit" value="{{btnAction}}">
